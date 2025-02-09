@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Vibrant Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            background: url('Images/products.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #15150c;
+        }
+
+        header {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        #products {
+            margin-top: 2rem;
+        }
+
+        h2 {
+            color: #2d3436;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: center;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            color: #2d3436;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #636e72;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-button {
+            padding: 0.5rem 1.5rem;
+            background: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-button:hover {
+            background: #ff6b6b;
+            color: white;
+        }
+        .cta-button {
+             display: inline-block;
+              padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+             color: white;
+             text-decoration: none;
+             border-radius: 25px;
+             font-weight: bold;
+             transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+              transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛍️ Our Products</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Discover Our Collection ✨</h2>
+            <div class="filters">
+                <button class="filter-button">All</button>
+                <button class="filter-button">Electronics</button>
+                <button class="filter-button">Fashion</button>
+                <button class="filter-button">Home & Living</button>
+            </div>
+            <div class="product-list">
+                <!-- Dynamically added products -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Sample product data
+        const products = [
+        {
+        id: 1,
+        title: "Smart Watch",
+        description: "Latest generation smartwatch with health tracking",
+        price: 199.99,
+        category: "Electronics",
+        image: "smart watch.webp"
+    },
+    {
+        id: 2,
+        title: "Wireless Earbuds",
+        description: "Noise-canceling earbuds with crystal-clear sound",
+        price: 129.99,
+        category: "Electronics",
+        image: "earbuds.jpg"
+    },
+    {
+        id: 3,
+        title: "Gaming Laptop",
+        description: "High-performance laptop for gaming and productivity",
+        price: 999.99,
+        category: "Electronics",
+        image: "Gaming Laptop.avif"
+    },
+    {
+        id: 4,
+        title: "Bluetooth Speaker",
+        description: "Portable speaker with deep bass and long battery life",
+        price: 79.99,
+        category: "Electronics",
+        image: "Bluetooth Speaker.webp"
+    },
+    {
+        id: 5,
+        title: "Action Camera",
+        description: "Waterproof 4K action camera for adventure enthusiasts",
+        price: 249.99,
+        category: "Electronics",
+        image: "Action Camera.jpg"
+    },
+    {
+        id: 6,
+        title: "Tablet",
+        description: "Lightweight tablet with a stunning display for all-day use",
+        price: 299.99,
+        category: "Electronics",
+        image: "Tablet.avif"
+    },
+           // Fashion
+    {
+        id: 7,
+        title: "Designer Bag",
+        description: "Elegant leather bag for everyday use",
+        price: 149.99,
+        category: "Fashion",
+        image: "bag.jpg"
+    },
+    {
+        id: 8,
+        title: "Men's Jacket",
+        description: "Stylish and warm winter jacket for men",
+        price: 199.99,
+        category: "Fashion",
+        image: "mens-jacket.jpg"
+    },
+    {
+        id: 9,
+        title: "Women's Sunglasses",
+        description: "Chic sunglasses with UV protection",
+        price: 79.99,
+        category: "Fashion",
+        image: "sunglasses.webp"
+    },
+    {
+        id: 10,
+        title: "Sneakers",
+        description: "Comfortable sneakers for everyday wear",
+        price: 129.99,
+        category: "Fashion",
+        image: "sneakers.webp"
+    },
+    {
+        id: 11,
+        title: "Evening Dress",
+        description: "Elegant dress perfect for formal events",
+        price: 249.99,
+        category: "Fashion",
+        image: "Evening Dress.webp"
+    },
+    {
+        id: 12,
+        title: "Leather Belt",
+        description: "Classic leather belt for a polished look",
+        price: 49.99,
+        category: "Fashion",
+        image: "Leather Belt.webp"
+    },
+
+    // Home & Living
+    {
+        id: 13,
+        title: "Table Lamp",
+        description: "Modern LED table lamp with adjustable brightness",
+        price: 79.99,
+        category: "Home & Living",
+        image: "lamp.avif"
+    },
+    {
+        id: 14,
+        title: "Sofa Cushion Set",
+        description: "Soft and colorful cushions for your sofa",
+        price: 39.99,
+        category: "Home & Living",
+        image: "Sofa Cushion Set.jpeg"
+    },
+    {
+        id: 15,
+        title: "Wall Art",
+        description: "Abstract art prints to decorate your walls",
+        price: 59.99,
+        category: "Home & Living",
+        image: "Wall Art.jpg"
+    },
+    {
+        id: 16,
+        title: "Ceramic Vase",
+        description: "Elegant vase for fresh flowers or decor",
+        price: 29.99,
+        category: "Home & Living",
+        image: "Ceramic Vase.avif"
+    },
+    {
+        id: 17,
+        title: "Kitchen Utensils Set",
+        description: "Complete set of utensils for all your cooking needs",
+        price: 49.99,
+        category: "Home & Living",
+        image: "Kitchen Utensils Set.jpg"
+    },
+    {
+        id: 18,
+        title: "Wooden Dining Table",
+        description: "Elegant wooden dining table for your home",
+        price: 599.99,
+        category: "Home & Living",
+        image: "Wooden Dining Table.jpg"
+    }
+];
+            
+        
+
+        // Function to render products
+        function renderProducts(products) {
+            const productList = document.querySelector('.product-list');
+            productList.innerHTML = '';
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                    <h3 class="product-title">${product.title}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <p class="product-price">$${product.price}</p>
+                    <a href="cart.html" class="cta-button">Add to Cart</a>
+    
+                `;
+                productList.appendChild(productCard);
+            });
+        }
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.textContent;
+                const filteredProducts = category === 'All' 
+                    ? products 
+                    : products.filter(product => product.category === category);
+                renderProducts(filteredProducts);
+            });
+        });
+
+        // Initial render
+        renderProducts(products);
+    </script>
+</body>
+</html>

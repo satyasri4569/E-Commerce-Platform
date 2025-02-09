@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home & Living - Vibrant Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            background: url('Images/home.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #15150c;
+        
+        }
+
+        header {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        #products {
+            margin-top: 2rem;
+        }
+
+        h2 {
+            color: #2d3436;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Ensure 3 items per row */
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: center;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            color: #2d3436;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #636e72;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .product-list {
+                grid-template-columns: 1fr 1fr; /* 2 items per row on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-list {
+                grid-template-columns: 1fr; /* 1 item per row on very small screens */
+            }
+        }
+        .cta-button {
+             display: inline-block;
+              padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+             color: white;
+             text-decoration: none;
+             border-radius: 25px;
+             font-weight: bold;
+             transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+              transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛋️ Home & Living</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Explore Our Home & Living Collection 🏡</h2>
+            <div class="product-list">
+                <!-- Dynamically added home and living products -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Sample home & living product data
+        const products = [
+            {
+                id: 13,
+                title: "Table Lamp",
+                description: "Modern LED table lamp with adjustable brightness",
+                price: 79.99,
+                category: "Home & Living",
+                image: "Images/lamp.avif"
+            },
+            {
+                id: 14,
+                title: "Sofa Cushion Set",
+                description: "Soft and colorful cushions for your sofa",
+                price: 39.99,
+                category: "Home & Living",
+                image: "Images/Sofa Cushion Set.jpeg"
+            },
+            {
+                id: 15,
+                title: "Wall Art",
+                description: "Abstract art prints to decorate your walls",
+                price: 59.99,
+                category: "Home & Living",
+                image: "Images/Wall Art.jpg"
+            },
+            {
+                id: 16,
+                title: "Ceramic Vase",
+                description: "Elegant vase for fresh flowers or decor",
+                price: 29.99,
+                category: "Home & Living",
+                image: "Images/Ceramic Vase.avif"
+            },
+            {
+                id: 17,
+                title: "Kitchen Utensils Set",
+                description: "Complete set of utensils for all your cooking needs",
+                price: 49.99,
+                category: "Home & Living",
+                image: "Images/Kitchen Utensils Set.jpg"
+            },
+            {
+                id: 18,
+                title: "Wooden Dining Table",
+                description: "Elegant wooden dining table for your home",
+                price: 599.99,
+                category: "Home & Living",
+                image: "Images/Wooden Dining Table.jpg"
+            }
+        ];
+
+        // Function to render products
+        function renderProducts(products) {
+            const productList = document.querySelector('.product-list');
+            productList.innerHTML = '';
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                    <h3 class="product-title">${product.title}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <p class="product-price">$${product.price}</p>
+                    <a href="cart.html" class="cta-button">Add to Cart</a>
+
+                `;
+                productList.appendChild(productCard);
+            });
+        }
+
+        // Initial render
+        renderProducts(products);
+    </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Vibrant Shop</title>
+    <style>
+        /* Your original styles remain unchanged */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        #checkout {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2d3436;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .checkout-items {
+            list-style: none;
+        }
+
+        .checkout-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checkout-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 1.1rem;
+            color: #2d3436;
+        }
+
+        .item-price {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .checkout-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #eee;
+        }
+
+        .btn-proceed {
+            padding: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-proceed:hover {
+            transform: scale(1.02);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛒 Checkout</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="checkout">
+            <h2>Review Your Cart</h2>
+            <div id="checkout-items" class="checkout-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="checkout-total">
+                <span>Total:</span>
+                <span id="checkout-total">$0.00</span>
+            </div>
+            <button class="btn-proceed" id="proceed-to-payment-btn">Proceed to Payment</button>
+        </section>
+    </main>
+
+    <script>
+        // Retrieve cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        function updateCheckout() {
+            const checkoutContainer = document.getElementById('checkout-items');
+            const checkoutTotal = document.getElementById('checkout-total');
+
+            if (cartItems.length === 0) {
+                checkoutContainer.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                checkoutTotal.textContent = '$0.00';
+                return;
+            }
+
+            checkoutContainer.innerHTML = '';
+            let totalAmount = 0;
+
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalAmount += itemTotal;
+
+                const checkoutItem = document.createElement('div');
+                checkoutItem.className = 'checkout-item';
+                checkoutItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="item-details">
+                        <span class="item-title">${item.title}</span>
+                        <span class="item-price">$${item.price.toFixed(2)}</span>
+                    </div>
+                `;
+                checkoutContainer.appendChild(checkoutItem);
+            });
+
+            checkoutTotal.textContent = `$${totalAmount.toFixed(2)}`;
+        }
+
+        document.getElementById('proceed-to-payment-btn').addEventListener('click', () => {
+            // You can pass the cart data to payment.html if needed using localStorage or URL parameters
+            localStorage.setItem("cartItems", JSON.stringify(cartItems)); // Save cart data to localStorage
+            window.location.href = "payment.html"; // Redirect to payment page
+        });
+
+        updateCheckout();
+    </script>
+</body>
+</html>

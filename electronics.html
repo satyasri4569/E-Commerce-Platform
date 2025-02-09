@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics - Vibrant Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            background: url('Images/elect.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #15150c;
+
+        }
+
+        header {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 0.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        #products {
+            margin-top: 2rem;
+        }
+
+        h2 {
+            color: #2d3436;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to 1 column */
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: center;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            color: #2d3436;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #636e72;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive layout for 3 items in a row after the first item */
+        @media (min-width: 768px) {
+            .product-list {
+                grid-template-columns: 1fr 1fr 1fr; /* 3 items in a row */
+            }
+        }
+        .cta-button {
+             display: inline-block;
+              padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+             color: white;
+             text-decoration: none;
+             border-radius: 25px;
+             font-weight: bold;
+             transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+              transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔌 Electronics</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="fashion.html">Fashion</a>
+            <a href="home.html">Home & Living</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Discover Our Electronics Collection ✨</h2>
+            <div class="product-list">
+                <div class="product-card">
+                    <img src="Images/smart watch.webp" alt="Smart Watch" class="product-image">
+                    <h3 class="product-title">Smart Watch</h3>
+                    <p class="product-description">Latest generation smartwatch with health tracking</p>
+                    <p class="product-price">$199.99</p>
+                    <a href="cart.html" class="cta-button">Add to Cart</a>
+
+                </div>
+                <div class="product-card">
+                    <img src="Images/earbuds.jpg" alt="Wireless Earbuds" class="product-image">
+                    <h3 class="product-title">Wireless Earbuds</h3>
+                    <p class="product-description">Noise-canceling earbuds with crystal-clear sound</p>
+                    <p class="product-price">$129.99</p>
+                    <a href="cart.html" class="cta-button">Add to Cart</a>
+
+                </div>
+                <div class="product-card">
+                    <img src="Images/Gaming Laptop.avif" alt="Gaming Laptop" class="product-image">
+                    <h3 class="product-title">Gaming Laptop</h3>
+                    <p class="product-description">High-performance laptop for gaming and productivity</p>
+                    <p class="product-price">$999.99</p>
+                    <a href="cart.html" class="cta-button">Add to Cart</a>
+
+                </div>
+                <div class="product-card">
+                    <img src="Images/Bluetooth Speaker.webp" alt="Bluetooth Speaker" class="product-image">
+                    <h3 class="product-title">Bluetooth Speaker</h3>
+                    <p class="product-description">Portable speaker with deep bass and long battery life</p>
+                    <p class="product-price">$79.99</p>
+                    <a href="cart.html" class="cta-button">Add to Cart</a>
+
+                </div>
+                <div class="product-card">
+                    <img src="Images/Action Camera.jpg" alt="Action Camera" class="product-image">
+                    <h3 class="product-title">Action Camera</h3>
+                    <p class="product-description">Waterproof 4K action camera for adventure enthusiasts</p>
+                    <p class="product-price">$249.99</p>
+                    <a href="cart.html" class="cta-button">Add to Cart</a>
+
+                </div>
+                <div class="product-card">
+                    <img src="Images/Tablet.avif" alt="Tablet" class="product-image">
+                    <h3 class="product-title">Tablet</h3>
+                    <p class="product-description">Lightweight tablet with a stunning display for all-day use</p>
+                    <p class="product-price">$299.99</p>
+                    <a href="cart.html" class="cta-button">Add to Cart</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Completed - Vibrant Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>✅ Payment Completed</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="categories.html">Categories</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="payment-summary">
+            <h2>Payment Details</h2>
+            <div class="summary-details">
+                <p><strong>Name on Card:</strong> <span id="name-on-card-detail"></span></p>
+                <p><strong>Card Number:</strong> <span id="card-number-detail"></span></p>
+                <p><strong>Expiration Date:</strong> <span id="expiration-date-detail"></span></p>
+                <p><strong>CVV:</strong> <span id="cvv-detail"></span></p>
+            </div>
+            <p>Your payment was successful! Thank you for your purchase.</p>
+        </section>
+    </main>
+
+    <script>
+        // Fetch payment details from local storage
+        const paymentDetails = JSON.parse(localStorage.getItem('paymentDetails'));
+
+        if (paymentDetails) {
+            document.getElementById('name-on-card-detail').textContent = paymentDetails.nameOnCard;
+            document.getElementById('card-number-detail').textContent = paymentDetails.cardNumber.replace(/\d(?=\d{4})/g, "x"); // Hide card number except last 4 digits
+            document.getElementById('expiration-date-detail').textContent = paymentDetails.expirationDate;
+            document.getElementById('cvv-detail').textContent = '***'; // CVV should not be shown for security reasons
+        } else {
+            document.querySelector('.payment-summary').innerHTML = '<p>No payment information found.</p>';
+        }
+    </script>
+</body>
+</html>
